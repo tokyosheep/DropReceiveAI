@@ -68,3 +68,30 @@ function fitArtBoard(){
         return true;
     }
 }
+
+function rePlaceImg(obj){
+    //alert(obj.index);
+    var places = activeDocument.placedItems;
+    for(var i=0;i<places.length;i++){
+        //alert(places[i].file);
+        if(places[i].file == obj.path && i == obj.index){
+            //alert(i);
+            places[i].file = new File(obj.file);
+            
+        }
+    }
+    return;
+}
+
+function rePlaceAll(images){
+    var places = activeDocument.placedItems;
+    for(var i=0;i<places.length;i++){
+        for(var n=0;n<images.length;n++){
+            var f = new File(images[n]);
+            if(places[i].file.name == f.name){
+                places[i].file = f;
+            }
+        }
+    }
+    return;
+}
